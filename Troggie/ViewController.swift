@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     var ip:String?
     var user:String?
     var paswd:String?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -88,10 +88,18 @@ class ViewController: UIViewController {
                 if let error = error {
                     print(error)
                 } else {
-                    self.state.text = "connected"
+                    self.state.text = "State: connected"
                     self.state.textColor = UIColor .green
                 }
         }
+        self.shell
+            .write("./run.sh\n") { (error) in
+                if let error = error {
+                    print("\(error)")
+                }
+                
+        }
+        print(self.shell.readStringCallback!)
 
         
     }
@@ -106,6 +114,7 @@ class ViewController: UIViewController {
             
         }
         print(self.shell.readStringCallback!)
+        connect2ros()
     }
     
     @IBAction func RunMap(_ sender: Any) {
@@ -121,7 +130,7 @@ class ViewController: UIViewController {
     
     @IBAction func Manually(_ sender: Any) {
         self.shell
-            .write("./run.sh\n") { (error) in
+            .write("ls\n") { (error) in
                 if let error = error {
                     print("\(error)")
                 }
@@ -130,6 +139,7 @@ class ViewController: UIViewController {
         print(self.shell.readStringCallback!)
         connect2ros()
     }
+    
     func connect2ros() {
         //RBSManager.connect(RBSManager)
         self.TrogManager = RBSManager.sharedManager()
