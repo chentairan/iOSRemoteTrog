@@ -1,0 +1,36 @@
+PODS:
+  - CDJoystick (1.1.0)
+  - ObjectMapper (3.4.2)
+  - RBSManager (0.3.2):
+    - ObjectMapper (~> 3.4.2)
+    - Starscream (~> 3.0.3)
+  - Starscream (3.0.6)
+  - SwiftSH (0.1.2):
+    - SwiftSH/Libssh2 (= 0.1.2)
+  - SwiftSH/Core (0.1.2)
+  - SwiftSH/Libssh2 (0.1.2):
+    - SwiftSH/Core
+
+DEPENDENCIES:
+  - CDJoystick
+  - RBSManager
+  - SwiftSH
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CDJoystick
+    - ObjectMapper
+    - RBSManager
+    - Starscream
+    - SwiftSH
+
+SPEC CHECKSUMS:
+  CDJoystick: 5563edf7dbc276cfec6f4606ee2a5b63ee54a15e
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  RBSManager: 8e976eb49faa5371788f2c89d2f8052770253981
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  SwiftSH: 5d3c95b23093106d18c527ce9c175a5733e3e86e
+
+PODFILE CHECKSUM: 75ecc910f9114e514b68c668d8d5311d7af55c98
+
+COCOAPODS: 1.7.5

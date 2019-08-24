@@ -1,0 +1,6 @@
+framework module Pods_TroggieUITests {
+  umbrella header "Pods-TroggieUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

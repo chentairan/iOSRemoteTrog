@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-Troggie/Pods-Troggie-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CDJoystick/CDJoystick.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
+${BUILT_PRODUCTS_DIR}/RBSManager/RBSManager.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
+${BUILT_PRODUCTS_DIR}/SwiftSH/SwiftSH.framework
