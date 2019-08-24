@@ -1,5 +1,5 @@
 # iOSRemoteTrog
-iOS App based on Swift remote a Trog based on ROS
+an iOS App based on Swift remotes a Trog based on ROS
 
 ## Getting Started
 
