@@ -18,8 +18,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var state: UILabel!
     @IBOutlet weak var joystick: CDJoystick!
+    @IBOutlet weak var connectButton: UIButton!
     
-
+    var connectState:Bool!
     var command: Command!
     var shell: Shell!
     var TrogManager: RBSManager?
@@ -35,6 +36,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        ip_adress.delegate = self
+        username.delegate = self
+        password.delegate = self
+        self.connectState = false
         self.enableControl = false
         joystick.trackingHandler = { joystickData in
             self.twistx = joystickData.velocity.x
@@ -100,44 +106,62 @@ class ViewController: UIViewController {
                 
         }
         print(self.shell.readStringCallback!)
-
+        if self.shell.authenticated {
+            self.connectButton.backgroundColor = UIColor .red
+            self.connectButton.setTitle("Disconnect", for: .normal)
+            self.connectState = true
+        }
+        if !self.shell.authenticated {
+            self.connectButton.backgroundColor = UIColor(displayP3Red: 90/255.0, green: 151/255.0, blue: 247/255.0, alpha: 1.0)
+            self.connectButton.setTitle("Connect", for: .normal)
+            self.connectState = false
+        }
         
     }
     
     
     @IBAction func CreateMap(_ sender: Any) {
-        self.shell
-            .write("ls\n") { (error) in
-            if let error = error {
-                print("\(error)")
+        
+        if self.connectState {
+            self.shell
+                .write("ls\n") { (error) in
+                if let error = error {
+                    print("\(error)")
+                }
+                
             }
-            
+            print(self.shell.readStringCallback!)
+            connect2ros()
         }
-        print(self.shell.readStringCallback!)
-        connect2ros()
     }
     
     @IBAction func RunMap(_ sender: Any) {
-        self.shell
-            .write("ls\n") { (error) in
-                if let error = error {
-                    print("\(error)")
-                }
-                
+        
+        if self.connectState {
+            self.shell
+                .write("ls\n") { (error) in
+                    if let error = error {
+                        print("\(error)")
+                    }
+                    
+            }
+            print(self.shell.readStringCallback!)
         }
-        print(self.shell.readStringCallback!)
     }
     
     @IBAction func Manually(_ sender: Any) {
-        self.shell
-            .write("ls\n") { (error) in
-                if let error = error {
-                    print("\(error)")
-                }
-                
+        
+        if self.connectState {
+            self.shell
+                .write("ls\n") { (error) in
+                    if let error = error {
+                        print("\(error)")
+                    }
+                    
+            }
+            print(self.shell.readStringCallback!)
+            connect2ros()
         }
-        print(self.shell.readStringCallback!)
-        connect2ros()
     }
     
     func connect2ros() {
@@ -152,7 +176,20 @@ class ViewController: UIViewController {
         self.enableControl = true
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ip_adress.resignFirstResponder()
+        username.resignFirstResponder()
+        password.resignFirstResponder()
+    }
     
 }
 
+
+extension ViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+}
