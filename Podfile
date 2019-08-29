@@ -6,7 +6,8 @@ target 'Troggie' do
   use_frameworks!
   pod 'SwiftSH'
   pod 'RBSManager'
-  pod "CDJoystick"
+  pod 'CDJoystick'
+
   # Pods for Troggie
 
   target 'TroggieTests' do

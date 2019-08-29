@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E917F512316E8EF00114B7F /* GHConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E917F502316E8EF00114B7F /* GHConsole.swift */; };
 		6EA0F29A230FC00100D98136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0F299230FC00100D98136 /* AppDelegate.swift */; };
 		6EA0F29C230FC00100D98136 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0F29B230FC00100D98136 /* ViewController.swift */; };
 		6EA0F29F230FC00100D98136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA0F29D230FC00100D98136 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		1FAB842FA2AD8E46E747611F /* Pods_TroggieUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TroggieUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25344710F736F0B4BDC75A58 /* Pods-TroggieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TroggieTests.release.xcconfig"; path = "Target Support Files/Pods-TroggieTests/Pods-TroggieTests.release.xcconfig"; sourceTree = "<group>"; };
 		59545CB6853CAAB2AA55F034 /* Pods-TroggieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TroggieTests.debug.xcconfig"; path = "Target Support Files/Pods-TroggieTests/Pods-TroggieTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6E917F502316E8EF00114B7F /* GHConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GHConsole.swift; sourceTree = "<group>"; };
 		6EA0F296230FC00100D98136 /* Troggie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Troggie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA0F299230FC00100D98136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EA0F29B230FC00100D98136 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E917F4F2316E8AB00114B7F /* GHConsoleSwift */ = {
+			isa = PBXGroup;
+			children = (
+				6E917F502316E8EF00114B7F /* GHConsole.swift */,
+			);
+			path = GHConsoleSwift;
+			sourceTree = "<group>";
+		};
 		6EA0F28D230FC00100D98136 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		6EA0F298230FC00100D98136 /* Troggie */ = {
 			isa = PBXGroup;
 			children = (
+				6E917F4F2316E8AB00114B7F /* GHConsoleSwift */,
 				6EA0F299230FC00100D98136 /* AppDelegate.swift */,
 				6EA0F29B230FC00100D98136 /* ViewController.swift */,
 				6EA0F29D230FC00100D98136 /* Main.storyboard */,
@@ -389,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E917F512316E8EF00114B7F /* GHConsole.swift in Sources */,
 				6EA0F2A2230FC00100D98136 /* Troggie.xcdatamodeld in Sources */,
 				6EA0F29C230FC00100D98136 /* ViewController.swift in Sources */,
 				6EA0F29A230FC00100D98136 /* AppDelegate.swift in Sources */,

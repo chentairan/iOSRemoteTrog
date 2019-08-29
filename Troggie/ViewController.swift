@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     var connectState:Bool!
     var command: Command!
     var shell: Shell!
+    var terminal: Shell!
     var TrogManager: RBSManager?
     var TrogPublisher: RBSPublisher?
     
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
                     .withCallback { [unowned self] (string: String?, error: String?) in
                         DispatchQueue.main.async {
                             if let string = string {
-                                print(string)
+                                GGLog(string)
                             }
                             if let error = error {
                                 print(error)
@@ -87,15 +88,58 @@ class ViewController: UIViewController {
                     break
                 }
             }
+            for _ in 0...50 {
+                self.terminal = Shell(host: self.ip!, port: 22)
+                self.terminal
+                    .withCallback { [unowned self] (string: String?, error: String?) in
+                        DispatchQueue.main.async {
+                            if let string = string {
+                                GGLog(string)
+                            }
+                            if let error = error {
+                                print(error)
+                            }
+                        }
+                    }
+                    .connect()
+                    .authenticate(.byPassword(username: self.user!, password: self.paswd!))
+                    .open { [unowned self] (error) in
+                        if let error = error {
+                            print(error)
+                        } else {
+                        }
+                }
+                if self.terminal.authenticated {
+                    break
+                }
+            }
         }
-        if self.shell.authenticated {
+        else {
+            if self.shell.authenticated && self.terminal.authenticated {
+                self.shell?.disconnect { [unowned self] in
+                    self.connectButton.backgroundColor = UIColor(displayP3Red: 90/255.0, green: 151/255.0, blue: 247/255.0, alpha: 1.0)
+                    self.connectButton.setTitle("Connect", for: .normal)
+                    self.connectState = false
+                    self.state.text = "State: disconnected"
+                    self.state.textColor = UIColor .red
+                }
+                self.terminal?.disconnect { [unowned self] in
+                    self.connectButton.backgroundColor = UIColor(displayP3Red: 90/255.0, green: 151/255.0, blue: 247/255.0, alpha: 1.0)
+                    self.connectButton.setTitle("Connect", for: .normal)
+                    self.connectState = false
+                    self.state.text = "State: disconnected"
+                    self.state.textColor = UIColor .red
+                }
+            }
+        }
+        if self.shell.authenticated && self.terminal.authenticated {
             self.connectButton.backgroundColor = UIColor .red
             self.connectButton.setTitle("Disconnect", for: .normal)
             self.connectState = true
             self.state.text = "State: connected"
             self.state.textColor = UIColor .green
         }
-        if !self.shell.authenticated {
+        if !self.shell.authenticated || !self.terminal.authenticated {
             self.connectButton.backgroundColor = UIColor(displayP3Red: 90/255.0, green: 151/255.0, blue: 247/255.0, alpha: 1.0)
             self.connectButton.setTitle("Connect", for: .normal)
             self.connectState = false
@@ -109,17 +153,30 @@ class ViewController: UIViewController {
     @IBAction func CreateMap(_ sender: Any) {
         
         if self.connectState {
-            self.shell
-                .write("rosnode kill --all\n./run_mapping.sh\n") { (error) in
-                if let error = error {
-                    print("\(error)")
+            if self.state.text != "State: mapping" {
+                self.terminal
+                    .write("./reset.sh\n") { (error) in
+                        if let error = error {
+                            print("\(error)")
+                        }
+                        else {
+                            self.state.text = "State: init"
+                            self.state.textColor = UIColor .green
+                        }
                 }
-                else {
-                    self.state.text = "State: mapping"
-                    self.state.textColor = UIColor .green
+            
+                self.shell
+                    .write("./run_mapping.sh\n") { (error) in
+                    if let error = error {
+                        print("\(error)")
+                    }
+                    else {
+                        self.state.text = "State: mapping"
+                        self.state.textColor = UIColor .green
+                    }
                 }
+                print(self.shell.readStringCallback!)
             }
-            print(self.shell.readStringCallback!)
             connect2ros()
         }
         else {
@@ -132,18 +189,31 @@ class ViewController: UIViewController {
     @IBAction func RunMap(_ sender: Any) {
         
         if self.connectState {
-            self.shell
-                .write("rosnode kill --all\n./run_autopilot.sh\n") { (error) in
-                    if let error = error {
-                        print("\(error)")
-                    }
-                    else {
-                        self.state.text = "State: autopilot"
-                        self.state.textColor = UIColor .green
-                    }
-                    
+            if self.state.text != "State: autopilot" {
+                self.terminal
+                    .write("./reset.sh\n") { (error) in
+                        if let error = error {
+                            print("\(error)")
+                        }
+                        else {
+                            self.state.text = "State: init"
+                            self.state.textColor = UIColor .green
+                        }
+                }
+            
+                self.shell
+                    .write("./run_autopilot.sh\n") { (error) in
+                        if let error = error {
+                            print("\(error)")
+                        }
+                        else {
+                            self.state.text = "State: autopilot"
+                            self.state.textColor = UIColor .green
+                        }
+                        
+                }
+                print(self.shell.readStringCallback!)
             }
-            print(self.shell.readStringCallback!)
             connect2ros()
         }
         else {
@@ -155,19 +225,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func Manual(_ sender: Any) {
+        
         if self.connectState {
-            self.shell
-                .write("rosnode kill --all\n./run.sh\n") { (error) in
-                    if let error = error {
-                        print("\(error)")
-                    }
-                    else {
-                        self.state.text = "State: manual"
-                        self.state.textColor = UIColor .green
-                    }
-                    
-            }
-            print(self.shell.readStringCallback!)
             connect2ros()
         }
         else {
@@ -184,18 +243,17 @@ class ViewController: UIViewController {
             self.present(alertCon, animated:true, completion:nil)
         }
         else {
-            self.shell
-                .write("rosnode kill --all\n") { (error) in
+            self.terminal
+                .write("./reset.sh\n") { (error) in
                     if let error = error {
                         print("\(error)")
                     }
                     else {
-                        self.state.text = "State: connected"
+                        self.state.text = "State: init"
                         self.state.textColor = UIColor .green
                     }
-                    
             }
-            print(self.shell.readStringCallback!)
+            print(self.terminal.readStringCallback!)
         }
     }
     
@@ -206,7 +264,15 @@ class ViewController: UIViewController {
                 
                 let textField = alertCon.textFields?.first
                 // 点击确定后页面对于输入框内容的处理逻辑
-                
+                self.terminal
+                    .write("./save_map.sh " + textField!.text! + "\n") { (error) in
+                        if let error = error {
+                            print("\(error)")
+                        }
+                        else {
+                        }
+                        
+                }
             })
             alertCon.addAction(confirmAction)
             
