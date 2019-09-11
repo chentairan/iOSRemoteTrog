@@ -170,6 +170,14 @@
                                     <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wOP-aL-Jb5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8yK-6Z-cNt">
+                                <rect key="frame" x="42" y="710" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Goal1"/>
+                                <connections>
+                                    <action selector="Goal1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RN0-17-g36"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

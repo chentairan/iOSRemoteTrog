@@ -11,6 +11,7 @@ import SwiftSH
 import RBSManager
 import CDJoystick
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var ip_adress: UITextField!
@@ -26,6 +27,7 @@ class ViewController: UIViewController {
     var terminal: Shell!
     var TrogManager: RBSManager?
     var TrogPublisher: RBSPublisher?
+    var GoalPublisher: RBSPublisher?
     
     var twistx,twisty:CGFloat?
     var enableControl:Bool?
@@ -292,10 +294,24 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func Goal1(_ sender: UIButton) {
+        let message = PoseStampedMessage()
+        message.pose?.position?.x = 0
+        message.pose?.position?.y = 0
+        message.pose?.position?.z = 0
+        message.pose?.orientation?.x = 0
+        message.pose?.orientation?.y = 0
+        message.pose?.orientation?.z = 0
+        message.pose?.orientation?.w = 1
+        
+        self.GoalPublisher?.publish(message)
+    }
     func connect2ros() {
         //RBSManager.connect(RBSManager)
         self.TrogManager = RBSManager.sharedManager()
         self.TrogPublisher = self.TrogManager?.addPublisher(topic: "/trog_velocity_controller/cmd_vel", messageType: "geometry_msgs/Twist", messageClass: TwistMessage.self)
+        
+        self.GoalPublisher = self.TrogManager?.addPublisher(topic: "/move_base_simple/goal", messageType: "geometry_msgs/PoseStamped", messageClass: PoseStampedMessage.self)
         
         let socketHost = "ws://" + self.ip! + ":9090"
         

@@ -16,6 +16,9 @@
 		6EA0F2A7230FC00100D98136 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EA0F2A5230FC00100D98136 /* LaunchScreen.storyboard */; };
 		6EA0F2B2230FC00100D98136 /* TroggieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0F2B1230FC00100D98136 /* TroggieTests.swift */; };
 		6EA0F2BD230FC00100D98136 /* TroggieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0F2BC230FC00100D98136 /* TroggieUITests.swift */; };
+		6EA6069623296CEC00331D26 /* PoseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6069323296CEC00331D26 /* PoseMessage.swift */; };
+		6EA6069723296CEC00331D26 /* PoseStamped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6069423296CEC00331D26 /* PoseStamped.swift */; };
+		6EA6069823296CEC00331D26 /* QuaternionMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6069523296CEC00331D26 /* QuaternionMessage.swift */; };
 		73F671A554552C78054E565C /* Pods_TroggieUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAB842FA2AD8E46E747611F /* Pods_TroggieUITests.framework */; };
 		C15FA67345C50AB607371316 /* Pods_TroggieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6782A50B1B51F1CC2CBE438 /* Pods_TroggieTests.framework */; };
 		E8D1B714CE6D18D488211927 /* Pods_Troggie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1151C2F182C6CCFD75E8CC46 /* Pods_Troggie.framework */; };
@@ -59,6 +62,9 @@
 		6EA0F2B8230FC00100D98136 /* TroggieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TroggieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA0F2BC230FC00100D98136 /* TroggieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroggieUITests.swift; sourceTree = "<group>"; };
 		6EA0F2BE230FC00100D98136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EA6069323296CEC00331D26 /* PoseMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseMessage.swift; sourceTree = "<group>"; };
+		6EA6069423296CEC00331D26 /* PoseStamped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoseStamped.swift; sourceTree = "<group>"; };
+		6EA6069523296CEC00331D26 /* QuaternionMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionMessage.swift; sourceTree = "<group>"; };
 		8C32A4E954CA31DF9A7B9C78 /* Pods-TroggieUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TroggieUITests.release.xcconfig"; path = "Target Support Files/Pods-TroggieUITests/Pods-TroggieUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FA28F34864DFC163614D2F0 /* Pods-Troggie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Troggie.debug.xcconfig"; path = "Target Support Files/Pods-Troggie/Pods-Troggie.debug.xcconfig"; sourceTree = "<group>"; };
 		B9957DE18BBF0E3B6D98DE1C /* Pods-TroggieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TroggieUITests.debug.xcconfig"; path = "Target Support Files/Pods-TroggieUITests/Pods-TroggieUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +132,9 @@
 		6EA0F298230FC00100D98136 /* Troggie */ = {
 			isa = PBXGroup;
 			children = (
+				6EA6069323296CEC00331D26 /* PoseMessage.swift */,
+				6EA6069423296CEC00331D26 /* PoseStamped.swift */,
+				6EA6069523296CEC00331D26 /* QuaternionMessage.swift */,
 				6E917F4F2316E8AB00114B7F /* GHConsoleSwift */,
 				6EA0F299230FC00100D98136 /* AppDelegate.swift */,
 				6EA0F29B230FC00100D98136 /* ViewController.swift */,
@@ -403,7 +412,10 @@
 				6E917F512316E8EF00114B7F /* GHConsole.swift in Sources */,
 				6EA0F2A2230FC00100D98136 /* Troggie.xcdatamodeld in Sources */,
 				6EA0F29C230FC00100D98136 /* ViewController.swift in Sources */,
+				6EA6069723296CEC00331D26 /* PoseStamped.swift in Sources */,
+				6EA6069823296CEC00331D26 /* QuaternionMessage.swift in Sources */,
 				6EA0F29A230FC00100D98136 /* AppDelegate.swift in Sources */,
+				6EA6069623296CEC00331D26 /* PoseMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
