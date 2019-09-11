@@ -178,6 +178,22 @@
                                     <action selector="Goal1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RN0-17-g36"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68J-Mj-lub">
+                                <rect key="frame" x="193" y="710" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Lab"/>
+                                <connections>
+                                    <action selector="Goal2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pbe-sp-CgY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1L-oK-7wa">
+                                <rect key="frame" x="329" y="710" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Goal3"/>
+                                <connections>
+                                    <action selector="Goal3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P3z-tv-CKV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -296,8 +296,9 @@ class ViewController: UIViewController {
     
     @IBAction func Goal1(_ sender: UIButton) {
         let message = PoseStampedMessage()
-        message.pose?.position?.x = 0
-        message.pose?.position?.y = 0
+        message.header?.frameId = "map"
+        message.pose?.position?.x = 14.851641655
+        message.pose?.position?.y = 27.9891624451
         message.pose?.position?.z = 0
         message.pose?.orientation?.x = 0
         message.pose?.orientation?.y = 0
@@ -306,6 +307,35 @@ class ViewController: UIViewController {
         
         self.GoalPublisher?.publish(message)
     }
+    
+    @IBAction func Goal2(_ sender: UIButton) {
+        let message = PoseStampedMessage()
+        message.header?.frameId = "map"
+        message.pose?.position?.x = 3.57808566093
+        message.pose?.position?.y = 1.69878447056
+        message.pose?.position?.z = 0
+        message.pose?.orientation?.x = 0
+        message.pose?.orientation?.y = 0
+        message.pose?.orientation?.z = 0
+        message.pose?.orientation?.w = 1
+        
+        self.GoalPublisher?.publish(message)
+    }
+    
+    @IBAction func Goal3(_ sender: UIButton) {
+        let message = PoseStampedMessage()
+        message.header?.frameId = "map"
+        message.pose?.position?.x = 46.857597351
+        message.pose?.position?.y = -3.83778047562
+        message.pose?.position?.z = 0
+        message.pose?.orientation?.x = 0
+        message.pose?.orientation?.y = 0
+        message.pose?.orientation?.z = 0
+        message.pose?.orientation?.w = 1
+        
+        self.GoalPublisher?.publish(message)
+    }
+    
     func connect2ros() {
         //RBSManager.connect(RBSManager)
         self.TrogManager = RBSManager.sharedManager()
